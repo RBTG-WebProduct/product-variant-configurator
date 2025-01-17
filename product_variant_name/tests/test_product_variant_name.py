@@ -5,10 +5,11 @@ from odoo.tests import TransactionCase
 
 
 class TestProductVariantName(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.product_tmpl_model = self.env["product.template"]
-        self.product_model = self.env["product.product"]
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.product_tmpl_model = cls.env["product.template"]
+        cls.product_model = cls.env["product.product"]
 
     def test_product_variant_name(self):
         # Create a product template and check that variant is created with the
