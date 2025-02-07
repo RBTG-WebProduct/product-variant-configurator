@@ -1,0 +1,2 @@
+odoo-addon-product_variant_attribute_tax @ git+https://github.com/OCA/product-variant.git@refs/pull/383/head#subdirectory=product_variant_attribute_tax
+odoo-addon-sale_variant_configurator @ git+https://github.com/OCA/product-variant.git@refs/pull/381/head#subdirectory=sale_variant_configurator
