@@ -94,7 +94,7 @@ class TestSaleOrder(common.TransactionCase):
             line2.name,
             "{}\n{}".format(
                 self.product_template_no.name,
-                self.product_template_no.description_sale or "",
+                self.product_template_no.description_sale,
             ),
         )
 
@@ -126,9 +126,10 @@ class TestSaleOrder(common.TransactionCase):
                 attribute_line_form.value_id = self.value1
         sale = order_form.save()
         line = sale.order_line
-        self.assertEqual(line.price_unit, 110)
-        self.assertEqual(line.price_extra, 10)
-        self.assertEqual(line.price_unit + line.price_extra, 120)
+        attribute_price_extra = sum(line.product_attribute_ids.mapped("price_extra"))
+        self.assertEqual(line.price_unit, 100)
+        self.assertEqual(attribute_price_extra, 10)
+        self.assertEqual(line.price_unit + attribute_price_extra, 110)
         self.assertEqual(line.product_id, product)
 
     def _test_can_create_product_variant(self):
